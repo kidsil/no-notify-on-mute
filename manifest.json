@@ -1,0 +1,22 @@
+{
+
+  "manifest_version": 2,
+  "name": "No Notifications on Tab Mute",
+  "version": "1.0",
+  "description": "When Muting a Tab, this extension stops the pop-up notifications as well",
+  "background": {
+    "scripts": ["no-notify-on-mute.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"]
+    }
+  ],
+  "permissions": [
+    "<all_urls>",
+    "tabs",
+    "activeTab",
+    "storage"
+  ]
+}
