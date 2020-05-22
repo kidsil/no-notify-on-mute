@@ -2,7 +2,7 @@ browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (typeof changeInfo.mutedInfo !== 'undefined') {
     const mutingScript = `
       if (typeof window.Notification.permission !== 'undefined') {
-        console.log('Disabling Notifications (tab muted)');
+        console.log('no-notify-on-mute: Disabling Notifications (tab muted)');
         window.tempMutedNotification = window.Notification;
         window.Notification = class empty {};
       }
@@ -10,7 +10,7 @@ browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
     const unmutingScript = `
         if (window.tempMutedNotification) {
-          console.log('Re-enabling Notifications (tab unmuted)');
+          console.log('no-notify-on-mute: Re-enabling Notifications (tab unmuted)');
           window.Notification = window.tempMutedNotification;
           delete window.tempMutedNotification;
         }
